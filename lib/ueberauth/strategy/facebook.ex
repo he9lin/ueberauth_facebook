@@ -40,7 +40,7 @@ defmodule Ueberauth.Strategy.Facebook do
   Handles the callback from Facebook.
   """
   def handle_callback!(%Plug.Conn{params: %{"code" => code}} = conn) do
-    opts = [redirect_uri: callback_url(conn)]
+    opts = [] # [redirect_uri: callback_url(conn)]
     token = Ueberauth.Strategy.Facebook.OAuth.get_token!([code: code], opts)
 
     if token.access_token == nil do
